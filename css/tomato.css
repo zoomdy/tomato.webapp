@@ -1,0 +1,14 @@
+.remainTime {
+    text-align: center;
+    font-size: 160px;
+    line-height: 1.5;
+    color: #999;
+}
+
+.remainTimeWork {
+    color: #5bc0de;
+}
+
+.remainTimeRest {
+    color: #5cb85c;
+}
