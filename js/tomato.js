@@ -17,7 +17,13 @@ $(document).ready(function() {
 			sec = duration.sec;
 		}
 
-		$("#remainTime").text(min + ":" + sec);
+		var str = min + ":" + sec;
+		$("#remainTime").text(str);
+		if(working) {
+			document.title = str + " 工作倒计时";
+		} else {
+			document.title = str + " 休息倒计时";
+		}
 	}
 
 	function countDown(duration) {
