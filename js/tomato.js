@@ -26,6 +26,16 @@ $(document).ready(function() {
 		}
 	}
 
+	function getDuration(duration) {
+		duration.min = $("#" + duration.id).val();
+		if(isNaN(duration.min) || duration.min.length == 0) {
+			duration.min = 5;
+		} else {
+			duration.min = parseInt(duration.min);
+		}
+		duration.sec = 0;
+	}
+
 	function countDown(duration) {
 		if(duration.sec > 0) {
 			duration.sec--;
@@ -37,12 +47,7 @@ $(document).ready(function() {
 
 		if(duration.min == 0 && duration.sec == 0) {
 			alert(duration.msg);
-			duration.min = $("#" + duration.id).val();
-			if(isNaN(duration.min) || duration.min.length == 0) {
-				duration.min = 5;
-			} else {
-				duration.min = parseInt(duration.min);
-			}
+			getDuration(duration);
 
 			working = !duration.working;
 			$("#remainTime").removeClass(duration.addClass);
@@ -78,5 +83,15 @@ $(document).ready(function() {
 		}
 
 	}, 1000);
+
+	$("#reset").click(function(){
+		working = true;
+		getDuration(workDuration);
+
+		$("#remainTime").removeClass("remainTimeRest");
+		$("#remainTime").addClass("remainTimeWork");
+
+		displayClock(workDuration);
+	});
 
 });
